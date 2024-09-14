@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="d-flex">
+    {% include "layouts/sidebar.html" %}
+
+    <div class="w-100">
+        {% include "layouts/header.html" %}
+        <div class="my-3 mx-3">
+
+            <!-- Display Success Messages -->
+            {% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <h1>Hello {{ first_name }}</h1>
+
+            <form action= 'application'method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="companyname" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="companyname" name="companyname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="jobtitle" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="jobtitle" name="jobtitle" required>
+                </div>
+                <div class="mb-3">
+                    <label for="jobtype" class="form-label">Job Type</label>
+                    <select class="form-select" aria-label="Default select example" name="jobtype" id="jobtype" required>
+                        <option value="Full Time" selected>Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Apprenticeship">Apprenticeship</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="applieddate" class="form-label">Applied Date</label>
+                    <input type="date" class="form-control" id="applieddate" name="applieddate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

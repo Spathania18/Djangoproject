@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+
+
+{% block content %}
+<div class="d-flex">
+    {% include "layouts/sidebar.html" %}
+
+    <div class = "w-100">
+        {% include "layouts/header.html" %}
+        <div class = "my-3 mx-3">
+
+            {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <h1>signup</h1>
+
+            <form action="/signup" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="usertname" class="form-label">User Name</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="User Name">
+                </div>
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+                </div>
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Enter Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                <div class="mb-3">
+                    <label for="cnfpassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="cnfpassword" name="cnfpassword" placeholder="Confirm Password">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Sign Up</button>
+                </div>
+            </form>
+        </div>
+            
+        
+    </div>
+    
+</div>
+{% endblock content %}

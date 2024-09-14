@@ -1,0 +1,42 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="d-flex">
+    {% include "layouts/sidebar.html" %}
+
+    <div class="w-100">
+        {% include "layouts/header.html" %}
+        <div class="my-3 mx-3">
+            <h1 class="text-center">All Applications</h1>
+
+            <table id="applicationsTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Job Title</th>
+                        <th>Job Type</th>
+                        <th>Applied Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for app in applications %}
+                    <tr>
+                        <td>{{ app.company_name }}</td>
+                        <td>{{ app.job_title }}</td>
+                        <td>{{ app.job_type }}</td>
+                        <td>{{ app.applied_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'assests/js/allapplications.js' %}" defer></script>
+{% endblock scripts %}
